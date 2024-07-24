@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kotak Indonesia dan Madura</title>
+  </head>
+  <body>
+    <div id="kotak1">
+      <button id="bahasa" value="1" onclick="toggleContent('kotak1', 'kotak2')">Indonesia</button>
+    </div>
+    <div id="kotak2">
+      <button id="bahasa" value="2" onclick="toggleContent('kotak2', 'kotak1')">Madura</button>
+    </div>
+    <button onclick="swapContent()">Swap</button>
+
+    <script>
+      function toggleContent(idToToggle, idToReset) {
+        var kotakToToggle = document.getElementById(idToToggle);
+        var buttonToToggle = kotakToToggle.querySelector("button");
+
+        var kotakToReset = document.getElementById(idToReset);
+        var buttonToReset = kotakToReset.querySelector("button");
+
+        if (buttonToToggle.value === "1") {
+          buttonToToggle.value = "2";
+          buttonToToggle.textContent = "Madura";
+
+          buttonToReset.value = "1";
+          buttonToReset.textContent = "Indonesia";
+        } else {
+          buttonToToggle.value = "1";
+          buttonToToggle.textContent = "Indonesia";
+
+          buttonToReset.value = "2";
+          buttonToReset.textContent = "Madura";
+        }
+      }
+
+      function swapContent() {
+        var kotak1 = document.getElementById("kotak1");
+        var kotak2 = document.getElementById("kotak2");
+
+        var tempInnerHTML = kotak1.innerHTML;
+        kotak1.innerHTML = kotak2.innerHTML;
+        kotak2.innerHTML = tempInnerHTML;
+
+        // Swap button values too
+        var button1 = document.getElementById("bahasa");
+        var button2 = document.getElementById("bahasa");
+
+        var tempValue = button1.value;
+        button1.value = button2.value;
+        button2.value = tempValue;
+      }
+    </script>
+  </body>
+</html>
